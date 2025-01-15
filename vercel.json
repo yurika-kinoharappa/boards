@@ -1,7 +1,4 @@
 {
-    "env": {
-        "PATH": "$HOME/.local/bin:$PATH"
-    },
     "builds": [
         {
             "src": "config/wsgi.py",
