@@ -1,7 +1,6 @@
 {
     "env": {
         "PATH": "$HOME/.local/bin:$PATH"
-        
     },
     "builds": [
         {
