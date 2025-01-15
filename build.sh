@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Poetryのインストール
-curl -sSL https://install.python-poetry.org | python3 -
+curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.8.4 python3 -
 # pip3 install poetry
 
 
