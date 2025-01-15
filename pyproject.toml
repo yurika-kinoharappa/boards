@@ -8,7 +8,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "^5.1.5"
-mysqlclient = "^2.2.7"
+uvicorn = "^0.34.0"
+pymysql = "^1.1.1"
 
 
 [build-system]
