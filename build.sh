@@ -9,6 +9,6 @@ curl -sSL https://install.python-poetry.org | python3 -
 PATH=$PATH:$HOME/.local/bin poetry install
 echo "----export requirements.txt----"
 
-poetry -h
+PATH=$PATH:$HOME/.local/bin poetry -h
 
 PATH=$PATH:$HOME/.local/bin poetry export -f requirements.txt --output requirements.txt --without-hashes
