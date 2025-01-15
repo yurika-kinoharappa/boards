@@ -1,6 +1,6 @@
 {
     "env": {
-        "PATH": "$HOME/.local/bin:$PATH",
+        "PATH": "$HOME/.local/bin:$PATH"
     },
     "builds": [
         {
