@@ -6,9 +6,11 @@ curl -sSL https://install.python-poetry.org | POETRY_VERSION=1.8.4 python3 -
 
 
 # requirements.txt の生成
-PATH=$PATH:$HOME/.local/bin poetry install
+poetry install
 echo "----export requirements.txt----"
 
-PATH=$PATH:$HOME/.local/bin poetry -h
+poetry --version
 
-PATH=$PATH:$HOME/.local/bin poetry export -f requirements.txt --output requirements.txt --without-hashes
+poetry self add poetry-plugin-export
+
+poetry export -f requirements.txt --output requirements.txt --without-hashes
