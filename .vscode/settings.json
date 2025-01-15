@@ -4,7 +4,9 @@
         "files.autoSave": "afterDelay",
     },
     "flake8.args": [
-        "--max-line-length=120"
+        "--max-line-length=200"
     ],
     "python.defaultInterpreterPath": "./venv/bin/python",
+    "editor.defaultFormatter": "ms-python.black-formatter",
+
 }
