@@ -21,6 +21,8 @@ dist/
 build/
 *.manifest
 *.spec
+staticfiles/
+
 
 # Poetry specific
 poetry.lock
