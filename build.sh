@@ -14,3 +14,5 @@ PATH=$PATH:$HOME/.local/bin poetry self add poetry-plugin-export
 PATH=$PATH:$HOME/.local/bin poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 PATH=$PATH:$HOME/.local/bin poetry run python manage.py collectstatic --noinput
+
+PATH=$PATH:$HOME/.local/bin poetry run python manage.py migrate
