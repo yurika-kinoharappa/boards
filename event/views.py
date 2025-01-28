@@ -24,7 +24,6 @@ def study_save1(request):
     sv.save()
     return HttpResponseRedirect(reverse("event:study"))
 
-
 def study_save2(request):
     s = request.POST.get("btoodtype")
     tb_n = request.POST.get("textbook_name")
@@ -173,6 +172,18 @@ def modoru_diet(request):
 
 
 def eat_save(request):
+    eat = request.POST.get("eat")
+    eat_time = request.POST.get("eat_time")
+    eating = request.POST.get("eating")
+    if eat == "朝ごはん":
+        sv = models.eat(morning=eating, eat_time=eat_time)
+    elif eat == "昼ごはん":
+        sv = models.eat(lunch=eating, eat_time=eat_time)
+    elif eat == "夜ごはん":
+        sv = models.eat(dinner=eating, eat_time=eat_time)
+    elif eat == "そのほか":
+        sv = models.eat(sonohoka=eating, eat_time=eat_time)
+    sv.save()
     return HttpResponseRedirect(reverse("event:diet"))
 
 def eat_shousai(request):

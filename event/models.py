@@ -50,7 +50,8 @@ class diet(models.Model):
 
 
 class eat(models.Model):
-    morning = models.CharField
-    lunch = models.CharField
-    dinner = models.CharField
+    morning = models.CharField(default=None)
+    lunch = models.CharField(default=None)
+    dinner = models.CharField(default=None)
+    sonohoka = models.CharField(default=None)
     eat_time = models.TimeField(default="00:00")
