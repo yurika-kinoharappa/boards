@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}
+Board | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>夢日記記録</title>
+    <link rel="stylesheet" href="{% static 'event/dream_diary.css' %}">
+</head>
+<body>
+    <h2>今までの夢日記</h2>
+    <div class="content">
+        <div class="cont1">
+            {% for event in all_dd %}
+                <a href="{% url 'event:dd_shousai' event.id %}"><p><p>{{ event.date|date:"m/d" }} {{ event.title }} </p></a>
+                <hr>
+            {% endfor %}
+        </div>
+        <div class="cont2">
+            <form method="post" action="{% url 'event:dd_save' %}">
+                {% csrf_token %}
+                <span>日付：</span>
+                <input type="date" name="date">
+                <span>タイトル：</span>
+                <input type="text" placeholder="タイトル" name="title">
+                <span>登場人物※改行区切り</span>
+                <textarea placeholder="登場人物" name="jinbutu"></textarea>
+                <span>本文</span>
+                <textarea placeholder="どんな夢だったか書いてみよう" name="text"></textarea>
+                <span>感想</span>
+                <textarea placeholder="感想を書いてみよう" name="kansou"></textarea>
+                <input type="submit" value="夢日記を書く" name="botton">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

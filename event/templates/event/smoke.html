@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}
+Board | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>タバコ記録</title>
+    <link rel="stylesheet" href="{% static 'event/smoke.css' %}">
+</head>
+<body>
+    <h1>タバコ</h1>
+    <div class="content">
+        <div class="cont1">
+        {% for event in all_sm %}
+            <a href="{% url 'event:smoke_shousai' event.id %}"><p>{{ event.date|date:"m/d" }} {{ event.name }} {{ event.honn }}本</p></a>
+            <hr>
+        {% endfor %}
+        </div>
+        <div class="cont2">
+            <form method="post" action="{% url 'event:smoke_save' %}">
+                {% csrf_token%}
+                <input type="text" placeholder="タバコ名" name="name">
+                <input type="number" value="00" min="0" name="mg">mg
+                <input type="number" value="00" min="0" name="honn">本
+                <textarea placeholder="メモ・ひとこと" name="memo"></textarea>
+                <input type="submit" value="記録する" name="kiroku">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

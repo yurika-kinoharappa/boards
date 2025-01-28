@@ -12,4 +12,9 @@ urlpatterns = [
     path("logout/", LogoutView.as_view(next_page="/"), name="logout"),
     path("change-password/", PasswordChangeView.as_view(), name="change-password"),
     path("signup/", views.signup, name="signup"),
+    path("study/", views.study, name="study"),
+    path("diary/", views.diary, name="diary"),
+    path("dd/", views.dd, name="dd"),
+    path("diet/", views.diet, name="diet"),
+    path("smoke/", views.smoke, name="smoke"),
 ]

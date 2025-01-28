@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+Board | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>日付：{{ event.date }}</p>
+    <p>銘柄：{{ event.name }} {{ event.mg }}</p>
+    <p>本数：{{ event.honn }}</p>
+    {% if memo == "" or memo == None %}
+    <p>メモ：なし</p>
+    {% else %}
+    <p>メモ：{{ event.memo }}</p>
+    {% endif %}
+    <form action="{% url 'event:modoru_smoke'%}">
+        {% csrf_token %}
+        <input type="submit" value="戻る" name="modoru">
+    </form>
+</body>
+</html>
+{% endblock %}

@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 
 app_name = "apps"
 urlpatterns = [
+    path("event/", include("event.urls")),
     path("", views.HomeView.as_view(), name="index"),
     path("login/", include("login.urls")),
     path("admin/", admin.site.urls),

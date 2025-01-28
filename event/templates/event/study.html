@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}
+Board | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>勉強記録</title>
+    <link rel="stylesheet" href="{% static 'event/study.css' %}">
+</head>
+<body>
+    <div class="content">
+        <div class="cont1">
+            <h2>勉強記録</h2>
+            {% for event in all_st %}
+            {% if event.time == None %}
+                <a href="{% url 'event:study_shousai' event.id %}"><p><p>{{ event.created|date:"m/d" }} {{ event.subject }} {{ event.peji1 }}ページ ~ {{ event.peji2 }}ページ</p></a>
+                <hr>
+            {% else %}
+                <a href="{% url 'event:study_shousai' event.id %}"><p>{{ event.created|date:"m/d" }} {{ event.subject }} {{ event.time|time:"G時間i分" }}</p></a>
+                <hr>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="cont2">
+            <h2>記録する</h2>
+            <h4>時間で記録する</h4>
+            <form method="post" action="{% url 'event:study_save1' %}">
+                {% csrf_token%}
+                <select name="btoodtype">
+                    <option value="国語">国語</option>
+                    <option vatue="数学">数学</option>
+                    <option vatue="社会科">社会科</option>
+                    <option value="理科">理科</option>
+                    <option value="英語">英語</option>
+                </select>
+                <input type="number" value="00" min="0" max="99" name="hhh">時間
+                <input type="number" value="00" min="0" max="59" name="mmm">分
+                <textarea placeholder="メモ・ひとこと" name="memo"></textarea>
+                <input type="submit" value="記録する" name="kiroku">
+            </form>
+            <h4>ページ数で記録する</h4>
+            <form method="post" action="{% url 'event:study_save2' %}">
+                {% csrf_token%}
+                <br>
+                <select name="btoodtype">
+                    <option value="国語">国語</option>
+                    <option vatue="数学">数学</option>
+                    <option vatue="社会科">社会科</option>
+                    <option value="理科">理科</option>
+                    <option value="英語">英語</option>
+                </select>
+                <input type="text" placeholder="参考書名" name="textbook_name">
+                <input type="number" value="00" min="0" max="10000" name="peji1">ページ ~ 
+                <input type="number" value="00" min="0" max="10000" name="peji2">ページ
+                <textarea placeholder="メモ・ひとこと" name="memo"></textarea>
+                <input type="submit" value="記録する" name="kiroku">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

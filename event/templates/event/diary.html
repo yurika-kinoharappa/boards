@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}
+Board | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日記記録</title>
+    <link rel="stylesheet" href="{% static 'event/diary.css' %}">
+</head>
+<body>
+    <h2>今までの日記</h2>
+    <div class="content">
+        <div class="cont1">
+            {% for event in all_di %}
+                <a href="{% url 'event:diary_shousai' event.id %}"><p><p>{{ event.date|date:"m/d" }} {{ event.tenki1 }} {{ event.tenki2 }} {{ event.title }}</p></a>
+                <hr>
+            {% endfor %}
+        </div>
+        <div class="cont2">
+            <form method="post" action="{% url 'event:diary_save' %}">
+                {% csrf_token %}
+                <span>日付：</span>
+                <input type="date" name="date">
+                <span>天気</span>
+                <select name="tenki1">
+                    <option value="晴れ">晴れ</option>
+                    <option value="曇り">曇り</option>
+                    <option value="雨">雨</option>
+                    <option value="雪">雪</option>
+                </select>
+                <select name="tenki2">
+                    <option value="が一日中">が一日中</option>
+                    <option value="のち晴れ">のち晴れ</option>
+                    <option value="のち曇り">のち曇り</option>
+                    <option value="のち雨">のち雨</option>
+                    <option value="のち雪">のち雪</option>
+                </select>
+                <span>タイトル：</span>
+                <input type="text" placeholder="タイトル" name="title">
+                <span>本文</span>
+                <textarea placeholder="どんな1日だったか書いてみよう" name="text"></textarea>
+                <span>今日の自分へひとこと：</span>
+                <input type="text" placeholder="今日もよく頑張った！" name="hitokoto">
+                <span>その他</span>
+                <textarea placeholder="そのほか好きなことを書こう" name="sonohoka"></textarea>
+                <input type="submit" value="日記を書く" name="botton">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

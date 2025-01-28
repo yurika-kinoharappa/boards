@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}
+Board | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ダイエット記録</title>
+    <link rel="stylesheet" href="{% static 'event/diet.css' %}">
+</head>
+<body>
+    <h2>今までの記録</h2>
+    <div class="content">
+        <div class="contents">
+            <div class="cont1">
+                {% for event in all_dt %}
+                    <a href="{% url 'event:diet_shousai' event.id %}"><p>{{ event.date|date:"m/d" }} {{ event.tenki1 }} {{ event.tenki2 }} {{ event.title }}</p></a>
+                    <hr>
+                {% endfor %}
+                <hr>
+            </div>
+            <div class="cont2">
+                {% for e in all_eat %}
+                <a href="{% url 'event:eat_shousai' e.id %}"></a>
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="cont3">
+            <form method="post" action="{% url 'event:diet_save' %}">
+                {% csrf_token %}
+                <span>日付：</span>
+                <input type="date" name="date">
+                <span>身長：</span>
+                <input type="number" name="height"><span>cm</span>
+                <span>体重：</span>
+                <input type="number" name="kg"><span>kg</span>
+                <span>年齢：</span>
+                <input type="number" name="age">
+                <span>運動名：</span>
+                <input type="text" name="play">
+                <span>運動時間：</span>
+                <input type="time" placeholder="00:00" name="time">
+                <input type="submit" value="記録をつける" name="botton">
+            </form>
+            <hr>
+            <form method="post" action="{% url 'event:eat_save' %}">
+                {% csrf_token %}
+                <p>食べたものを記録しよう</p>
+                <select name="eat">
+                    <option value="朝ごはん">朝ごはん</option>
+                    <option value="昼ごはん">昼ごはん</option>
+                    <option value="夜ごはん">夜ごはん</option>
+                    <option value="そのほか">そのほか</option>
+                </select>
+                <span>食べた時間</span>
+                <input type="time" placeholder="00:00" name="eat_time">
+                <span>食べたもの</span>
+                <textarea placeholder="食べたものを改行区切りで書こう" name="eating"></textarea>
+                <input type="submit" value="記録をつける" name="botton2">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}
