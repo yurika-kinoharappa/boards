@@ -30,7 +30,7 @@ class dd(models.Model):
 
 
 class smoke(models.Model):
-    date = models.DateField(default=datetime.date.today)
+    date = models.DateTimeField(auto_now_add=True)
     name = models.CharField(max_length=200)
     mg = models.IntegerField(default=0)
     honn = models.IntegerField(default=0)

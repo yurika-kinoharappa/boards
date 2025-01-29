@@ -16,9 +16,7 @@ Board | Home
     <div class="content">
         <p>記録日：{{ event.date }}</p>
         <p>食べた時間：{{ event.eat_time }}</p>
-        {% if event.morning == "" and event.lunch == "" and event.dinner == "" and event.sonohoka == "" %}
-        <p>食べたもの：記録なし</p>
-        {% elif event.lunch == "" and event.dinner == "" and evet.sonohoka == "" %}
+        {% if event.lunch == "" and event.dinner == "" and evet.sonohoka == "" %}
         <p>食べたもの：{{ event.morning }}</p>
         {% elif event.morning == "" and event.dinner == "" and event.sonohoka == "" %}
         <p>食べたもの：{{ event.lunch }}</p>
@@ -26,6 +24,8 @@ Board | Home
         <p>食べたもの：{{ event.dinner }}</p>
         {% elif event.lunch == "" and event.morning == "" and event.dinner == "" %}
         <p>食べたもの：{{ event.sonohoka }}</p>
+        {% else %}
+        <p>食べたもの：記録なし</p>
         {% endif %}
     </div>
         <form action="{% url 'event:modoru_diet'%}">
