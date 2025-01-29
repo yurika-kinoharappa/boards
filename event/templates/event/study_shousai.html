@@ -10,20 +10,23 @@ Board | Home
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'event/shousai.css' %}">
 </head>
 <body>
-    {% if event.time == None %}
-    <p>教科：{{ event.subject }}</p>
-    <p>メモ：{{ event.memo }}</p>
-    <p>範囲：{{ event.peji1 }}ページ ~ {{ event.peji2 }}ページ</p>
-    <p>参考書名：{{ event.textbook_name }}</p>
-    <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
-    {% else %}
-    <p>教科：{{ event.subject }}</p>
-    <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
-    <p>勉強時間：{{ event.time }}</p>
-    <p>メモ：{{ event.memo }}</p>
-    {% endif %}
+    <div class="content">
+        {% if event.time == None %}
+        <p>教科：{{ event.subject }}</p>
+        <p>メモ：{{ event.memo }}</p>
+        <p>範囲：{{ event.peji1 }}ページ ~ {{ event.peji2 }}ページ</p>
+        <p>参考書名：{{ event.textbook_name }}</p>
+        <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
+        {% else %}
+        <p>教科：{{ event.subject }}</p>
+        <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
+        <p>勉強時間：{{ event.time }}</p>
+        <p>メモ：{{ event.memo }}</p>
+        {% endif %}
+    </div>
     <form action="{% url 'event:modoru_study'%}">
         {% csrf_token %}
         <input type="submit" value="戻る" name="modoru">

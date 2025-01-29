@@ -10,20 +10,23 @@ Board | Home
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'event/shousai.css' %}">
 </head>
 <body>
-    <p>日付：{{ event.date }}</p>
-    <p>タイトル：{{ event.title }}</p>
-    <span>登場人物</span>
-    {% for i in jinbutu %}
-    <li>{{ i }}</li>
-    {% endfor %}
-    <p>内容：{{ event.text }}</p>
-    <p>感想:{{ event.kansou }}</p>
-    <form action="{% url 'event:modoru_dd'%}">
-        {% csrf_token %}
-        <input type="submit" value="戻る" name="modoru">
-    </form>
+    <div class="content">
+        <p>日付：{{ event.date }}</p>
+        <p>タイトル：{{ event.title }}</p>
+        <span>登場人物</span>
+        {% for i in jinbutu %}
+        <li>{{ i }}</li>
+        {% endfor %}
+        <p>内容：{{ event.text }}</p>
+        <p>感想:{{ event.kansou }}</p>
+    </div>
+        <form action="{% url 'event:modoru_dd'%}">
+            {% csrf_token %}
+            <input type="submit" value="戻る" name="modoru">
+        </form>
 </body>
 </html>
 {% endblock %}

@@ -50,8 +50,9 @@ class diet(models.Model):
 
 
 class eat(models.Model):
-    morning = models.CharField(max_length=1000, default="なし")
-    lunch = models.CharField(max_length=1000, default="なし")
-    dinner = models.CharField(max_length=1000, default="なし")
-    sonohoka = models.CharField(max_length=1000, default="なし")
+    date = models.DateField(default=datetime.date.today)
+    morning = models.CharField(max_length=1000, default="")
+    lunch = models.CharField(max_length=1000, default="")
+    dinner = models.CharField(max_length=1000, default="")
+    sonohoka = models.CharField(max_length=1000, default="")
     eat_time = models.TimeField(null=True, default="なし")

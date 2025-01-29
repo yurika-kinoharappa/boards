@@ -31,7 +31,7 @@ urlpatterns = [
     path("diet_shousai/<int:event_id>", views.diet_shousai, name="diet_shousai"),
     path("modoru_diet/", views.modoru_diet, name="modoru_diet"),
     path("eat_save/", views.eat_save, name="eat_save"),
-    path("eat_shousai", views.eat_shousai, name="eat_shousai"),
+    path("eat_shousai/<int:e_id>", views.eat_shousai, name="eat_shousai"),
 
     # タバコ
     path("smoke/", views.smoke, name="smoke"),

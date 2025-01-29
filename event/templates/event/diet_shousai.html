@@ -10,19 +10,23 @@ Board | Home
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'event/shousai.css' %}">
+
 </head>
 <body>
-    <p>記録日：{{ event.date }}</p>
-    <p>身長：{{ event.height }}　体重：{{ event.kg }}　推定BMI：{{ event.bmi }}</p>
-    {% if event.play == None or event.play == "" %}
-    <p>運動名：記録なし　運動時間：{{ event.time }}</p>
-    {% else %}
-    <p>運動名：{{ event.play }}　運動時間：{{ event.time }}</p>
-    {% endif %}
-    <form action="{% url 'event:modoru_diet'%}">
-        {% csrf_token %}
-        <input type="submit" value="戻る" name="modoru">
-    </form>
+    <div class="content">
+        <p>記録日：{{ event.date }}</p>
+        <p>身長：{{ event.height }}　体重：{{ event.kg }}　推定BMI：{{ event.bmi }}</p>
+        {% if event.play == None or event.play == "" %}
+        <p>運動名：記録なし　運動時間：{{ event.time }}</p>
+        {% else %}
+        <p>運動名：{{ event.play }}　運動時間：{{ event.time }}</p>
+        {% endif %}
+    </div>
+        <form action="{% url 'event:modoru_diet'%}">
+            {% csrf_token %}
+            <input type="submit" value="戻る" name="modoru">
+        </form>
 </body>
 </html>
 {% endblock %}

@@ -3,6 +3,7 @@ from event import models
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 import datetime
+from django.utils import timezone
 
 # 勉強
 def study(request):
@@ -133,7 +134,8 @@ def modoru_smoke(request):
 # ダイエット
 def diet(request):
     all_dt = models.diet.objects.order_by("-id").all()
-    dict = {"all_dt":all_dt}
+    all_eat = models.eat.objects.order_by("-id").all()
+    dict = {"all_dt":all_dt, "all_eat":all_eat}
     return render(request, "event/diet.html", dict)
 
 def diet_save(request):
@@ -178,6 +180,8 @@ def eat_save(request):
     eat = request.POST.get("eat")
     eat_time = request.POST.get("eat_time")
     eating = request.POST.get("eating")
+    if eat_time == "" or None:
+        eat_time = timezone.now()
     if eat == "朝ごはん":
         sv = models.eat(morning=eating, eat_time=eat_time)
     elif eat == "昼ごはん":
@@ -189,5 +193,7 @@ def eat_save(request):
     sv.save()
     return HttpResponseRedirect(reverse("event:diet"))
 
-def eat_shousai(request):
-    return HttpResponseRedirect(reverse("event:diet"))
+def eat_shousai(request, e_id):
+    event = models.eat.objects.get(id=e_id)
+    dict = {"event":event}
+    return render(request, "event/eat_shousai.html", dict)
