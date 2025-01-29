@@ -22,6 +22,7 @@ Board | Home
             {% endfor %}
         </div>
         <div class="cont2">
+            <h2>日記を書く</h2>
             <form method="post" action="{% url 'event:diary_save' %}">
                 {% csrf_token %}
                 <span>日付：</span>
