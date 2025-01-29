@@ -3,6 +3,17 @@
 Board | Home
 {% endblock %}
 {% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>いろいろ記録</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1>記録をつけたいものを選ぼう</h1>
 <div class="button">
     <form action="{% url 'login:study' %}" method="post">
         {% csrf_token %}
@@ -26,4 +37,7 @@ Board | Home
     </form>
     <!-- 薬 -->
 </div>
+
+</body>
+</html>
 {% endblock %}

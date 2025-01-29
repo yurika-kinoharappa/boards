@@ -13,8 +13,8 @@ Board | Home
 </head>
 <body>
     <p>日付：{{ event.date }}</p>
-    <p>銘柄：{{ event.name }} {{ event.mg }}</p>
-    <p>本数：{{ event.honn }}</p>
+    <p>銘柄：{{ event.name }}　{{ event.mg }}mg</p>
+    <p>本数：{{ event.honn }}本</p>
     {% if memo == "" or memo == None %}
     <p>メモ：なし</p>
     {% else %}

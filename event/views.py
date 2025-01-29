@@ -122,7 +122,7 @@ def smoke_save(request):
     return HttpResponseRedirect(reverse("event:smoke"))
 
 def smoke_shousai(request, event_id):
-    event = models.dd.objects.get(id=event_id)
+    event = models.smoke.objects.get(id=event_id)
     dict = {"event":event}
     return render(request, "event/smoke_shousai.html", dict)
 
@@ -142,11 +142,14 @@ def diet_save(request):
     kg = request.POST.get("kg")
     age = request.POST.get("age")
     play = request.POST.get("play")
-    time = request.POST.get("time")
+    t_h = request.POST.get("hhh")
+    t_m = request.POST.get("mmm")
+    t  = t_h + ":" + t_m
+    t_m = request.POST.get("mmm")
+    t  = t_h + ":" + t_m
     if date == "" or date == None:
         date = datetime.date.today()
-    if time == "" or time == None:
-        time = str(00) + ":" + str(00)
+
     if height == "" or height == None or kg == "" or kg == None :
         height = 0
         kg = 0
@@ -158,7 +161,7 @@ def diet_save(request):
         h = float(height / 100) ** 2
         bmi = kg / h
         bmi = round(bmi, 2)
-    sv = models.diet(date=date, height=height, kg=kg, age=age, bmi=bmi, play=play, time=time)
+    sv = models.diet(date=date, height=height, kg=kg, age=age, bmi=bmi, play=play, time=t)
     sv.save()
     return HttpResponseRedirect(reverse("event:diet"))
 

@@ -2,8 +2,65 @@
     display: flex;
 }
 .cont1{
-    width: 50%;
+    width: 48%;
+    margin-right: 2%;
 }
 .cont2{
-    width: 50%;
+    width: 48%;
+    margin-left: 2%;
+}
+.kiroku{
+    position: sticky;
+    top: 50px;
+}
+h1{
+    margin: 0;
+}
+.time{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.peji{
+    height: 50%;
+    margin-top: 5%;
+}
+a{
+    text-decoration: none;
+    text-align: center;
+}
+hr{
+    margin: 0;
+}
+p{
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+input.text{
+    height: 35px;
+    width: 200px;
+    margin-right: 20px;
+}
+input.number{
+    width: 50px;
+    height: 35px;
+    margin-bottom: 30px;
+}
+select{
+    width: 120px;
+    height: 35px;
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+input.kiroku{
+    margin-left: 10%;
+    font-size: 20px;
+    height: 40px;
+    width: 120px;
+}
+h3{
+    font-size: 35px;
+}
+textarea{
+    width: 70%;
+    height: 100px;
 }

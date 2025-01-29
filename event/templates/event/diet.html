@@ -13,9 +13,9 @@ Board | Home
     <link rel="stylesheet" href="{% static 'event/diet.css' %}">
 </head>
 <body>
-    <h2>今までの記録</h2>
     <div class="content">
         <div class="contents">
+            <h2>今までの記録</h2>
             <div class="cont1">
                 {% for event in all_dt %}
                     <a href="{% url 'event:diet_shousai' event.id %}"><p>{{ event.date|date:"m/d" }} {{ event.tenki1 }} {{ event.tenki2 }} {{ event.title }}</p></a>
@@ -31,21 +31,24 @@ Board | Home
             </div>
         </div>
         <div class="cont3">
+            <h2>記録をつける</h2>
             <form method="post" action="{% url 'event:diet_save' %}">
                 {% csrf_token %}
                 <span>日付：</span>
-                <input type="date" name="date">
+                <input type="date" class="date" name="date">
                 <span>身長：</span>
-                <input type="number" name="height"><span>cm</span>
+                <input type="number" class="num" name="height"><span>cm</span>
                 <span>体重：</span>
-                <input type="number" name="kg"><span>kg</span>
+                <input type="number" class="num" name="kg"><span>kg</span>
                 <span>年齢：</span>
-                <input type="number" name="age">
+                <input type="number"  class="num"name="age">
+                <br>
                 <span>運動名：</span>
-                <input type="text" name="play">
+                <input type="text" class="text" name="play">
                 <span>運動時間：</span>
-                <input type="time" placeholder="00:00" name="time">
-                <input type="submit" value="記録をつける" name="botton">
+                <input type="number" class="num" value="00" min="0" max="99" name="hhh">時間
+                <input type="number" class="num" value="00" min="0" max="59" name="mmm">分
+                <input type="submit" class="kiroku" value="記録をつける" name="botton">
             </form>
             <hr>
             <form method="post" action="{% url 'event:eat_save' %}">
@@ -58,10 +61,10 @@ Board | Home
                     <option value="そのほか">そのほか</option>
                 </select>
                 <span>食べた時間</span>
-                <input type="time" placeholder="00:00" name="eat_time">
+                <input type="time" class="time" placeholder="00:00" name="eat_time">
                 <span>食べたもの</span>
                 <textarea placeholder="食べたものを改行区切りで書こう" name="eating"></textarea>
-                <input type="submit" value="記録をつける" name="botton2">
+                <input type="submit" class="kiroku" value="記録をつける" name="botton2">
             </form>
         </div>
     </div>
