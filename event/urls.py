@@ -8,9 +8,12 @@ app_name = "event"
 urlpatterns = [
     # 勉強
     path("study/", views.study, name="study"),
+    path("kyouka_tuika", views.kyouka_henshuu, name="kyouka_henshuu"),
+    path("kyouka", views.kyouka_tuika, name="kyouka_tuika"),
+    path("kyouka_shoukyo/<int:event_id>", views.kyouka_shoukyo, name="kyouka_shoukyo"),
     path("study_save1/", views.study_save1, name="study_save1"),
     path("study_save2/", views.study_save2, name="study_save2"),
-    path("study_shousai/<int:event_id>",views.study_shousai, name="study_shousai"),
+    path("study_shousai/<int:event_id>", views.study_shousai, name="study_shousai"),
     path("modoru_study/", views.modoru_study, name="modoru_study"),
 
     # 日記

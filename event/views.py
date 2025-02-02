@@ -8,8 +8,27 @@ from django.utils import timezone
 # 勉強
 def study(request):
     all_st = models.Study.objects.order_by("-id").all()
-    dict = {"all_st":all_st}
-    return render(request, "event/study.html", dict)
+    all_kyouka = models.kyouka.objects.all()
+    dct1 = {"all_st":all_st, "all_kyouka":all_kyouka}
+    return render(request, "event/study.html", dct1)
+
+def kyouka_henshuu(request):
+    all_kyouka = models.kyouka.objects.all()
+    dct = {"all_kyouka":all_kyouka}
+    return render(request, "event/kyouka.html", dct)
+
+def kyouka_shoukyo(request, event_id):
+    event  = models.kyouka.objects.get(id=event_id)
+    event.delete()
+    return HttpResponseRedirect(reverse("event:kyouka_henshuu"))
+
+def kyouka_tuika(request):
+    kyouka = request.POST.get("text")
+    if kyouka == "" or kyouka == None:
+        return render(request, "event/kyouka.html")
+    sv = models.kyouka(kyouka=kyouka)
+    sv.save()
+    return HttpResponseRedirect(reverse("event:study"))
 
 def study_save1(request):
     s = request.POST.get("btoodtype")
@@ -37,6 +56,8 @@ def study_save2(request):
     if peji2 == "" :
         peji2 = 00
     time = None
+    if tb_n == "" or tb_n == None:
+        tb_n = "記録なし"
     sv = models.Study(subject=s, time=time, textbook_name=tb_n, peji1=peji1, peji2=peji2, memo=m, created=c)
     sv.save()
     return HttpResponseRedirect(reverse("event:study"))
@@ -44,8 +65,8 @@ def study_save2(request):
 
 def study_shousai(request, event_id):
     event = models.Study.objects.get(id=event_id)
-    dict = {"event":event}
-    return render(request, "event/study_shousai.html", dict)
+    dct = {"event":event}
+    return render(request, "event/study_shousai.html", dct)
 
 def modoru_study(request):
     return HttpResponseRedirect(reverse("event:study"))
@@ -53,8 +74,8 @@ def modoru_study(request):
 # 日記
 def diary(request):
     all_di = models.diary.objects.order_by("-id").all()
-    dict = {"all_di":all_di}
-    return render(request, "event/diary.html", dict)
+    dct = {"all_di":all_di}
+    return render(request, "event/diary.html", dct)
 
 def diary_save(request):
     date = request.POST.get("date")
@@ -72,8 +93,8 @@ def diary_save(request):
 
 def diary_shousai(request, event_id):
     event = models.diary.objects.get(id=event_id)
-    dict = {"event":event}
-    return render(request, "event/diary_shousai.html", dict)
+    dct = {"event":event}
+    return render(request, "event/diary_shousai.html", dct)
 
 def modoru_diary(request):
     return HttpResponseRedirect(reverse("event:diary"))
@@ -82,8 +103,8 @@ def modoru_diary(request):
 # 夢日記
 def dd(request):
     all_dd = models.dd.objects.order_by("-id").all()
-    dict = {"all_dd":all_dd}
-    return render(request, "event/dream_diary.html", dict)
+    dct = {"all_dd":all_dd}
+    return render(request, "event/dream_diary.html", dct)
 
 def dd_save(request):
     date = request.POST.get("date")
@@ -100,8 +121,8 @@ def dd_save(request):
 def dd_shousai(request, event_id):
     event = models.dd.objects.get(id=event_id)
     jinbutu = event.jinbutu.split()
-    dict = {"event":event, "jinbutu":jinbutu}
-    return render(request, "event/dream_diary_shousai.html", dict)
+    dct = {"event":event, "jinbutu":jinbutu}
+    return render(request, "event/dream_diary_shousai.html", dct)
 
 def modoru_dd(request):
     return HttpResponseRedirect(reverse("event:dd"))
@@ -109,8 +130,8 @@ def modoru_dd(request):
 # タバコ
 def smoke(request):
     all_sm = models.smoke.objects.order_by("-id").all()
-    dict = {"all_sm":all_sm}
-    return render(request, "event/smoke.html", dict)
+    dct = {"all_sm":all_sm}
+    return render(request, "event/smoke.html", dct)
 
 def smoke_save(request):
     date = datetime.date.today()
@@ -124,8 +145,8 @@ def smoke_save(request):
 
 def smoke_shousai(request, event_id):
     event = models.smoke.objects.get(id=event_id)
-    dict = {"event":event}
-    return render(request, "event/smoke_shousai.html", dict)
+    dct = {"event":event}
+    return render(request, "event/smoke_shousai.html", dct)
 
 def modoru_smoke(request):
     return HttpResponseRedirect(reverse("event:smoke"))
@@ -135,8 +156,8 @@ def modoru_smoke(request):
 def diet(request):
     all_dt = models.diet.objects.order_by("-id").all()
     all_eat = models.eat.objects.order_by("-id").all()
-    dict = {"all_dt":all_dt, "all_eat":all_eat}
-    return render(request, "event/diet.html", dict)
+    dct = {"all_dt":all_dt, "all_eat":all_eat}
+    return render(request, "event/diet.html", dct)
 
 def diet_save(request):
     date = request.POST.get("date")
@@ -169,8 +190,8 @@ def diet_save(request):
 
 def diet_shousai(request, event_id):
     event = models.diet.objects.get(id=event_id)
-    dict = {"event":event}
-    return render(request, "event/diet_shousai.html", dict)
+    dct = {"event":event}
+    return render(request, "event/diet_shousai.html", dct)
 
 def modoru_diet(request):
     return HttpResponseRedirect(reverse("event:diet"))
@@ -195,5 +216,5 @@ def eat_save(request):
 
 def eat_shousai(request, e_id):
     event = models.eat.objects.get(id=e_id)
-    dict = {"event":event}
-    return render(request, "event/eat_shousai.html", dict)
+    dct = {"event":event}
+    return render(request, "event/eat_shousai.html", dct)

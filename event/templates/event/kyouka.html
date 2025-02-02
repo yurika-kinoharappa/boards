@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}
+Board | Home
+{% endblock %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post" action="{% url 'event:kyouka_tuika' %}">
+        {% csrf_token %}
+        <input type="text" name="text" placeholder="教科名">
+        <input type="submit" name="submit" value="追加する">
+    </form>
+    {% for d in all_kyouka %}
+    <form method="post" action="{% url 'event:kyouka_shoukyo' d.id %}">
+        {% csrf_token %}
+        <p>{{ d.kyouka }}</p>
+        <input type="submit" value="消去">
+    </form>
+    {% endfor %}
+</body>
+</html>
+{% endblock %}

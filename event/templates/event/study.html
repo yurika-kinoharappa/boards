@@ -31,14 +31,17 @@ Board | Home
             <div class="kiroku">
             <div class="time">
                 <h3>時間で記録する</h3>
+                <form method="post" action="{% url 'event:kyouka_henshuu' %}">
+                    {% csrf_token %}
+                    <input type="submit" name="kyouka_tuika" value="教科を編集">
+                </form>
                 <form method="post" action="{% url 'event:study_save1' %}">
                     {% csrf_token%}
                     <select name="btoodtype">
-                        <option value="国語">国語</option>
-                        <option vatue="数学">数学</option>
-                        <option vatue="社会科">社会科</option>
-                        <option value="理科">理科</option>
-                        <option value="英語">英語</option>
+                        <option value="なし">なし</option>
+                        {% for k in all_kyouka %}
+                        <option value=k>{{ k.kyouka }}</option>
+                        {% endfor %}
                     </select>
                     <br>
                     <input type="number" class="number" value="00" min="0" max="99" name="hhh">時間
@@ -55,11 +58,10 @@ Board | Home
                     {% csrf_token%}
                     <br>
                     <select name="btoodtype">
-                        <option value="国語">国語</option>
-                        <option vatue="数学">数学</option>
-                        <option vatue="社会科">社会科</option>
-                        <option value="理科">理科</option>
-                        <option value="英語">英語</option>
+                        <option value="なし">なし</option>
+                        {% for k in all_kyouka %}
+                        <option value=k>{{ k.kyouka }}</option>
+                        {% endfor %}
                     </select>
                     <br>
                     <input type="text" class="text" placeholder="参考書名" name="textbook_name">
