@@ -21,21 +21,12 @@ Board | Home
             <p>範囲：{{ event.peji1 }}ページ ~ {{ event.peji2 }}ページ</p>
             <p>参考書名：{{ event.textbook_name }}</p>
             <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
-            <p>教科：{{ event.subject }}</p>
-            <p>メモ：{{ event.memo }}</p>
-            <p>範囲：{{ event.peji1 }}ページ ~ {{ event.peji2 }}ページ</p>
-            <p>参考書名：{{ event.textbook_name }}</p>
-            <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
         <!-- 勉強時間で記録 -->
         {% else %}
             <p>教科：{{ event.subject }}</p>
             <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
             <p>勉強時間：{{ event.time }}</p>
             <p>メモ：記録なし</p>
-            <p>教科：{{ event.subject }}</p>
-            <p>記録日：{{ event.created|date:"Y/m/d (D) H時i分" }}</p>
-            <p>勉強時間：{{ event.time }}</p>
-            <p>メモ：{{ event.memo }}</p>
         {% endif %}
     </div>
     <form action="{% url 'event:modoru_study'%}">

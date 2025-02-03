@@ -31,3 +31,18 @@ input.date{
     height: 35px;
     width: 150px;
 }
+hr .line{
+    border: none;
+    border-color: black;
+}
+.a{
+    display: flex;
+}
+.a input{
+    width: 200px;
+    height: 50px;
+    margin-left: 50%;
+}
+.eat{
+    margin-top: 15%;
+}

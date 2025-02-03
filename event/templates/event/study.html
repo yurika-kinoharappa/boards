@@ -28,13 +28,13 @@ Board | Home
         </div>
         <div class="cont2">
             <h1>記録する</h1>
+            <form method="post" action="{% url 'event:kyouka_henshuu' %}">
+                {% csrf_token %}
+                <input type="submit" class="tuikabotan" name="kyouka_tuika" value="教科を編集">
+            </form>
             <div class="kiroku">
             <div class="time">
                 <h3>時間で記録する</h3>
-                <form method="post" action="{% url 'event:kyouka_henshuu' %}">
-                    {% csrf_token %}
-                    <input type="submit" name="kyouka_tuika" value="教科を編集">
-                </form>
                 <form method="post" action="{% url 'event:study_save1' %}">
                     {% csrf_token%}
                     <select name="btoodtype">

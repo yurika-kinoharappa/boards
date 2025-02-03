@@ -29,7 +29,8 @@ urlpatterns = [
     path("modoru_dd/", views.modoru_dd, name="modoru_dd"),
 
     # ダイエット
-    path("diet/", views.diet, name="diet"),
+    path("diet1/", views.diet1, name="diet1"),
+    path("diet2/", views.diet2, name="diet2"),
     path("diet_save", views.diet_save, name="diet_save"),
     path("diet_shousai/<int:event_id>", views.diet_shousai, name="diet_shousai"),
     path("modoru_diet/", views.modoru_diet, name="modoru_diet"),

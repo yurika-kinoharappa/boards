@@ -32,7 +32,7 @@ def dd(request):
 
 
 def diet(request):
-    return HttpResponseRedirect(reverse("event:diet"))
+    return HttpResponseRedirect(reverse("event:diet1"))
 
 
 def smoke(request):

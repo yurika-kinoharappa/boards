@@ -28,7 +28,7 @@ def kyouka_tuika(request):
         return render(request, "event/kyouka.html")
     sv = models.kyouka(kyouka=kyouka)
     sv.save()
-    return HttpResponseRedirect(reverse("event:study"))
+    return HttpResponseRedirect(reverse("event:kyouka_henshuu"))
 
 def study_save1(request):
     s = request.POST.get("btoodtype")
@@ -153,11 +153,15 @@ def modoru_smoke(request):
 
 
 # ダイエット
-def diet(request):
+def diet1(request):
     all_dt = models.diet.objects.order_by("-id").all()
+    dct = {"all_dt":all_dt}
+    return render(request, "event/diet1.html", dct)
+
+def diet2(request):
     all_eat = models.eat.objects.order_by("-id").all()
-    dct = {"all_dt":all_dt, "all_eat":all_eat}
-    return render(request, "event/diet.html", dct)
+    dct = {"all_eat":all_eat}
+    return render(request, "event/diet2.html", dct)
 
 def diet_save(request):
     date = request.POST.get("date")
@@ -186,7 +190,7 @@ def diet_save(request):
         bmi = round(bmi, 2)
     sv = models.diet(date=date, height=height, kg=kg, age=age, bmi=bmi, play=play, time=t)
     sv.save()
-    return HttpResponseRedirect(reverse("event:diet"))
+    return HttpResponseRedirect(reverse("event:diet1"))
 
 def diet_shousai(request, event_id):
     event = models.diet.objects.get(id=event_id)
@@ -194,7 +198,7 @@ def diet_shousai(request, event_id):
     return render(request, "event/diet_shousai.html", dct)
 
 def modoru_diet(request):
-    return HttpResponseRedirect(reverse("event:diet"))
+    return HttpResponseRedirect(reverse("event:diet1"))
 
 
 def eat_save(request):
@@ -212,7 +216,7 @@ def eat_save(request):
     elif eat == "そのほか":
         sv = models.eat(sonohoka=eating, eat_time=eat_time)
     sv.save()
-    return HttpResponseRedirect(reverse("event:diet"))
+    return HttpResponseRedirect(reverse("event:diet2"))
 
 def eat_shousai(request, e_id):
     event = models.eat.objects.get(id=e_id)

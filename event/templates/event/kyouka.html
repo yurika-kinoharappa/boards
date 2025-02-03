@@ -10,20 +10,29 @@ Board | Home
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{% static 'event/kyouka.css' %}">
 </head>
 <body>
     <form method="post" action="{% url 'event:kyouka_tuika' %}">
         {% csrf_token %}
-        <input type="text" name="text" placeholder="教科名">
-        <input type="submit" name="submit" value="追加する">
+        <input type="text" name="text" class="kyoukamei" placeholder="教科名">
+        <input type="submit" class="tuika" name="submit" value="追加する">
     </form>
+    <ul>
     {% for d in all_kyouka %}
     <form method="post" action="{% url 'event:kyouka_shoukyo' d.id %}">
         {% csrf_token %}
-        <p>{{ d.kyouka }}</p>
-        <input type="submit" value="消去">
+        <div class="kyouka">
+            <li>{{ d.kyouka }}</li>
+            <input type="submit" value="消去">
+        </div>
     </form>
     {% endfor %}
+    </ul>
+    <form action="{% url 'event:modoru_study' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" class="kirokuhe" value="記録へ" name="modoru">
+    </form>
 </body>
 </html>
 {% endblock %}

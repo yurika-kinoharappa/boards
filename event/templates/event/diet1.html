@@ -15,37 +15,31 @@ Board | Home
 <body>
     <div class="content">
         <div class="contents">
-            <h2>今までの記録</h2>
+            <div class="a">
+            <h2>今までの運動記録</h2>
+            <form action="{% url 'event:diet2'%}">
+                {% csrf_token %}
+                <input type="submit" value="食べた記録を表示">
+            </form>
+            </div>
             <div class="cont1">
                 {% for event in all_dt %}
                 {% if event.play == "" or event.play == None %}
                     <a href="{% url 'event:diet_shousai' event.id %}"><p>{{ event.date|date:"m/d" }} 運動名：記録なし</p></a>
+                    <hr>
                 {% else %}
                     <a href="{% url 'event:diet_shousai' event.id %}"><p>{{ event.date|date:"m/d" }} 運動名：{{ event.play }}</p></a>
                     <hr>
                 {% endif %}
                 {% endfor %}
-                <hr>
-            </div>
-            <div class="cont2">
-                {% for e in all_eat %}
-                {% if e.lunch == "" and e.dinner == "" and e.sonohoka == "" %}
-                    <a href="{% url 'event:eat_shousai' e.id %}"><p>{{ e.date|date:"m/d" }}　朝ごはん</p></a>
-                {% elif e.morning == "" and e.dinner == "" and e.sonohoka == "" %}
-                    <a href="{% url 'event:eat_shousai' e.id %}"><p>{{ e.date|date:"m/d" }}　昼ごはん</p></a>
-                {% elif e.lunch == "" and e.morning == "" and e.sonohoka == "" %}
-                    <a href="{% url 'event:eat_shousai' e.id %}"><p>{{ e.date|date:"m/d" }}　夜ごはん</p></a>
-                {% elif e.lunch == "" and e.morning == "" and e.dinner == "" %}
-                    <a href="{% url 'event:eat_shousai' e.id %}"><p>{{ e.date|date:"m/d" }}　その他の食事</p></a>
-                {% endif %}
-                    <hr>
-                {% endfor %}
             </div>
         </div>
         <div class="cont3">
             <h2>記録をつける</h2>
+            <br>
             <form method="post" action="{% url 'event:diet_save' %}">
                 {% csrf_token %}
+                <h4>運動記録</h4>
                 <span>日付：</span>
                 <input type="date" class="date" name="date">
                 <span>身長：</span>
@@ -62,22 +56,23 @@ Board | Home
                 <input type="number" class="num" value="00" min="0" max="59" name="mmm">分
                 <input type="submit" class="kiroku" value="記録をつける" name="botton">
             </form>
-            <hr>
-            <form method="post" action="{% url 'event:eat_save' %}">
-                {% csrf_token %}
-                <p>食べたものを記録しよう</p>
-                <select name="eat">
-                    <option value="朝ごはん">朝ごはん</option>
-                    <option value="昼ごはん">昼ごはん</option>
-                    <option value="夜ごはん">夜ごはん</option>
-                    <option value="そのほか">そのほか</option>
-                </select>
-                <span>食べた時間</span>
-                <input type="time" class="time" placeholder="00:00" name="eat_time">
-                <span>食べたもの</span>
-                <textarea placeholder="食べたものを改行区切りで書こう" name="eating"></textarea>
-                <input type="submit" class="kiroku" value="記録をつける" name="botton2">
-            </form>
+            <div class="eat">
+                <form method="post" action="{% url 'event:eat_save' %}">
+                    {% csrf_token %}
+                    <h4>食べた記録</h4>
+                    <select name="eat">
+                        <option value="朝ごはん">朝ごはん</option>
+                        <option value="昼ごはん">昼ごはん</option>
+                        <option value="夜ごはん">夜ごはん</option>
+                        <option value="そのほか">そのほか</option>
+                    </select>
+                    <span>食べた時間</span>
+                    <input type="time" class="time" placeholder="00:00" name="eat_time">
+                    <span>食べたもの</span>
+                    <textarea placeholder="食べたものを改行区切りで書こう" name="eating"></textarea>
+                    <input type="submit" class="kiroku" value="記録をつける" name="botton2">
+                </form>
+            </div>
         </div>
     </div>
 </body>

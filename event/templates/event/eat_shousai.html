@@ -16,19 +16,19 @@ Board | Home
     <div class="content">
         <p>記録日：{{ event.date }}</p>
         <p>食べた時間：{{ event.eat_time }}</p>
-        {% if event.lunch == "" and event.dinner == "" and evet.sonohoka == "" %}
+        {% if event.lunch == "記録なし" and event.dinner == "記録なし" and event.sonohoka == "記録なし" %}
         <p>食べたもの：{{ event.morning }}</p>
-        {% elif event.morning == "" and event.dinner == "" and event.sonohoka == "" %}
+        {% elif event.morning == "記録なし" and event.dinner == "記録なし" and event.sonohoka == "記録なし" %}
         <p>食べたもの：{{ event.lunch }}</p>
-        {% elif event.lunch == "" and event.morning == "" and event.sonohoka == "" %}
+        {% elif event.lunch == "記録なし" and event.morning == "記録なし" and event.sonohoka == "記録なし" %}
         <p>食べたもの：{{ event.dinner }}</p>
-        {% elif event.lunch == "" and event.morning == "" and event.dinner == "" %}
+        {% elif event.lunch == "記録なし" and event.morning == "記録なし" and event.dinner == "記録なし" %}
         <p>食べたもの：{{ event.sonohoka }}</p>
         {% else %}
         <p>食べたもの：記録なし</p>
         {% endif %}
     </div>
-        <form action="{% url 'event:modoru_diet'%}">
+        <form action="{% url 'event:diet2'%}">
             {% csrf_token %}
             <input type="submit" value="戻る" name="modoru">
         </form>
