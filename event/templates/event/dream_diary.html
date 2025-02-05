@@ -17,8 +17,13 @@ Board | Home
     <div class="content">
         <div class="cont1">
             {% for event in all_dd %}
+            {% if event.title == None or event.title == "" %}
+                <a href="{% url 'event:dd_shousai' event.id %}"><p><p>{{ event.date|date:"m/d" }} タイトルなし </p></a>
+                <hr>
+            {% else %}
                 <a href="{% url 'event:dd_shousai' event.id %}"><p><p>{{ event.date|date:"m/d" }} 「{{ event.title }}」 </p></a>
                 <hr>
+            {% endif %}
             {% endfor %}
         </div>
         <div class="cont2">
