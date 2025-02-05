@@ -2,14 +2,55 @@
     display: flex;
 }
 .cont1{
-    width: 50%;
+    width: 48%;
+    margin-right: 2%;
+    text-align: center;
 }
 .cont2{
-    width: 50%;
+    width: 48%;
+    margin-left: 2%;
 }
 input.kiroku{
-    margin-left: 10%;
+    margin-left: 75%;
+    margin-top: 10px;
     font-size: 20px;
     height: 40px;
     width: 120px;
+}
+input.date{
+    height: 35px;
+    width: 150px;
+}
+.one{
+    height: 35px;
+    width: 250px;
+    margin-right: 20px;
+    margin: 20px 0;
+}
+.tenki{
+    margin-left: 30px;
+}
+span{
+    font-size: 20px;
+}
+.aaa{
+    margin-bottom: 50px;
+}
+textarea{
+    width: 90%;
+    margin-left: 5%;
+    height: 100px;
+}
+p{
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+a{
+    text-decoration: none;
+}
+form{
+    margin-top: 30px;
+}
+input{
+    margin-top: 10px;
 }

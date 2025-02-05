@@ -16,7 +16,7 @@ Board | Home
 <body>
     <div class="content">
         <p>記録日：{{ event.date }}</p>
-        <p>身長：{{ event.height }}　体重：{{ event.kg }}　推定BMI：{{ event.bmi }}</p>
+        <p>身長：{{ event.height }}cm　体重：{{ event.kg }}kg<br>推定BMI：{{ event.bmi }}</p>
         {% if event.play == None or event.play == "" %}
         <p>運動名：記録なし　運動時間：{{ event.time }}</p>
         {% else %}

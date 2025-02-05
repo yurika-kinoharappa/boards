@@ -16,10 +16,14 @@ Board | Home
     <div class="content">
         <p>日付：{{ event.date }}</p>
         <p>タイトル：{{ event.title }}</p>
+        <div class="jinbutu">
         <p>登場人物</p>
+        <div class="for">
         {% for i in jinbutu %}
-        <li>{{ i }}</li>
+        <li class="li">{{ i }}</li>
         {% endfor %}
+        </div>
+        </div>
         <p>内容：{{ event.text }}</p>
         <p>感想:{{ event.kansou }}</p>
     </div>

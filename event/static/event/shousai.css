@@ -1,5 +1,5 @@
 .content{
-    margin-left: 30%;
+    margin-left: 35%;
     margin-top: 18%;
 }
 input{
@@ -9,4 +9,14 @@ input{
 }
 p{
     font-size: 30px;
+}
+.li{
+    font-size: 25px;
+}
+.jinbutu{
+    display: flex;
+}
+.for {
+    margin-left: 20px;
+    margin-top: 5px;
 }

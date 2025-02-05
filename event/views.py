@@ -206,7 +206,7 @@ def eat_save(request):
     eat_time = request.POST.get("eat_time")
     eating = request.POST.get("eating")
     if eat_time == "" or None:
-        eat_time = timezone.now()
+        eat_time = timezone.localtime()
     if eat == "朝ごはん":
         sv = models.eat(morning=eating, eat_time=eat_time)
     elif eat == "昼ごはん":

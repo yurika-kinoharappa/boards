@@ -15,7 +15,11 @@ Board | Home
 <body>
     <div class="content">
         <p>記録日:{{ event.date }}</p>
+        {% if event.name == "" or event.name == None %}
+        <p>銘柄：記録なし　{{ event.mg }}mg</p>
+        {% else %}
         <p>銘柄：{{ event.name }}　{{ event.mg }}mg</p>
+        {% endif %}
         <p>本数：{{ event.honn }}本</p>
         {% if event.memo == "" or event.memo == None %}
         <p>メモ：なし</p>

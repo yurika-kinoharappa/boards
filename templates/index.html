@@ -13,29 +13,30 @@ Board | Home
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h1>記録をつけたいものを選ぼう</h1>
-<div class="button">
-    <form action="{% url 'login:study' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="勉強">
-    </form>
-    <form action="{% url 'login:smoke' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="タバコ">
-    </form>
-    <form action="{% url 'login:diet' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="ダイエット">
-    </form>
-    <form action="{% url 'login:diary' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="日記">
-    </form>
-    <form action="{% url 'login:dd' %}" method="post">
-        {% csrf_token %}
-        <input type="submit" value="夢日記">
-    </form>
-    <!-- 薬 -->
+    <div class="ccc">
+        <h1>記録をつけたいものを選ぼう</h1>
+    <div class="button">
+        <form action="{% url 'login:study' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="勉強">
+        </form>
+        <form action="{% url 'login:smoke' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="タバコ">
+        </form>
+        <form action="{% url 'login:diet' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="ダイエット">
+        </form>
+        <form action="{% url 'login:diary' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="日記">
+        </form>
+        <form action="{% url 'login:dd' %}" method="post">
+            {% csrf_token %}
+            <input type="submit" value="夢日記">
+        </form>
+    </div>
 </div>
 
 </body>

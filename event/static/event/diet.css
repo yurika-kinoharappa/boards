@@ -2,19 +2,28 @@
     display: flex;
 }
 .contents{
-    width: 50%;
+    width: 48%;
+    margin-right: 2%;
+}
+h2{
+    margin-top: 20px;
+}
+a{
+    text-decoration: none;
+    text-align: center;
 }
 .cont3{
-    width: 50%;
+    width: 48%;
+    margin-left: 2%;
 }
 input.kiroku{
-    margin-left: 10%;
+    margin-left: 75%;
     font-size: 20px;
     height: 40px;
     width: 120px;
 }
 input.num{
-    width: 50px;
+    width: 80px;
     height: 35px;
     margin-bottom: 30px;
 }
@@ -25,15 +34,11 @@ input.text{
 }
 input.time{
     height: 35px;
-    width: 75px;
+    width: 100px;
 }
 input.date{
     height: 35px;
     width: 150px;
-}
-hr .line{
-    border: none;
-    border-color: black;
 }
 .a{
     display: flex;
@@ -44,5 +49,28 @@ hr .line{
     margin-left: 50%;
 }
 .eat{
-    margin-top: 15%;
+    margin-top: 7%;
+}
+.tka{
+    margin-top: 20px;
+}
+.bbb{
+    margin-top: 15px;
+}
+.eat select{
+    margin-right: 50px;
+}
+textarea{
+    margin-top: 30px;
+    height: 130px;
+    width: 90%;
+    margin-left: 5%;
+}
+.kiroku{
+    position: sticky;
+    top: 50px;
+}
+p{
+    margin-bottom: 10px;
+    margin-top: 25px;
 }

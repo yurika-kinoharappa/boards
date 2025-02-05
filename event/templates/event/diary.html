@@ -13,9 +13,9 @@ Board | Home
     <link rel="stylesheet" href="{% static 'event/diary.css' %}">
 </head>
 <body>
-    <h2>今までの日記</h2>
     <div class="content">
         <div class="cont1">
+            <h2>今までの日記</h2>
             {% for event in all_di %}
                 <a href="{% url 'event:diary_shousai' event.id %}"><p><p>{{ event.date|date:"m/d" }} {{ event.tenki1 }} {{ event.tenki2 }} {{ event.title }}</p></a>
                 <hr>
@@ -26,8 +26,8 @@ Board | Home
             <form method="post" action="{% url 'event:diary_save' %}">
                 {% csrf_token %}
                 <span>日付：</span>
-                <input type="date" name="date">
-                <span>天気</span>
+                <input type="date" name="date" class="date">
+                <span class="tenki">天気</span>
                 <select name="tenki1">
                     <option value="晴れ">晴れ</option>
                     <option value="曇り">曇り</option>
@@ -41,14 +41,17 @@ Board | Home
                     <option value="のち雨">のち雨</option>
                     <option value="のち雪">のち雪</option>
                 </select>
+                <br>
                 <span>タイトル：</span>
-                <input type="text" placeholder="タイトル" name="title">
-                <span>本文</span>
-                <textarea placeholder="どんな1日だったか書いてみよう" name="text"></textarea>
-                <span>今日の自分へひとこと：</span>
-                <input type="text" placeholder="今日もよく頑張った！" name="hitokoto">
-                <span>その他</span>
-                <textarea placeholder="そのほか好きなことを書こう" name="sonohoka"></textarea>
+                <input type="text" placeholder="タイトル" name="title" class="one">
+                <br>
+                <textarea placeholder="[本文]どんな1日だったか書いてみよう" name="text"></textarea>
+                <br>
+                <span >今日の自分へひとこと：</span>
+                <input type="text" placeholder="今日もよく頑張った！" name="hitokoto" class="one">
+                <br>
+                <textarea placeholder="[その他]そのほか好きなことを書こう" name="sonohoka"></textarea>
+                <br>
                 <input type="submit" class="kiroku" value="日記を書く" name="botton">
             </form>
         </div>
