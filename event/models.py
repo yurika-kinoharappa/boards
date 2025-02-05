@@ -46,7 +46,6 @@ class diet(models.Model):
     date = models.DateField(default=datetime.date.today)
     height = models.IntegerField(default=0)
     kg = models.IntegerField(default=0)
-    age = models.IntegerField(default=0)
     bmi = models.CharField(max_length=100, default="計算できませんでした")
 
     play = models.CharField(max_length=100, null=True, default="記録なし")

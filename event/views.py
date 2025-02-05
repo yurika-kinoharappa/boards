@@ -167,7 +167,6 @@ def diet_save(request):
     date = request.POST.get("date")
     height = request.POST.get("height")
     kg = request.POST.get("kg")
-    age = request.POST.get("age")
     play = request.POST.get("play")
     t_h = request.POST.get("hhh")
     t_m = request.POST.get("mmm")
@@ -180,7 +179,6 @@ def diet_save(request):
     if height == "" or height == None or kg == "" or kg == None :
         height = 0
         kg = 0
-        age = 0
         bmi = "計測できませんでした"
     else:
         height = int(height)
@@ -188,7 +186,7 @@ def diet_save(request):
         h = float(height / 100) ** 2
         bmi = kg / h
         bmi = round(bmi, 2)
-    sv = models.diet(date=date, height=height, kg=kg, age=age, bmi=bmi, play=play, time=t)
+    sv = models.diet(date=date, height=height, kg=kg, bmi=bmi, play=play, time=t)
     sv.save()
     return HttpResponseRedirect(reverse("event:diet1"))
 
