@@ -17,7 +17,7 @@ Board | Home
         <div class="cont1">
             <h2>今までの日記</h2>
             {% for event in all_di %}
-                <a href="{% url 'event:diary_shousai' event.id %}"><p><p>{{ event.date|date:"m/d" }} {{ event.tenki1 }} {{ event.tenki2 }} {{ event.title }}</p></a>
+                <a href="{% url 'event:diary_shousai' event.id %}"><p><p>{{ event.date|date:"m/d" }}　{{ event.tenki1 }}{{ event.tenki2 }}　{{ event.title }}</p></a>
                 <hr>
             {% endfor %}
         </div>
